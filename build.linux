@@ -10,7 +10,7 @@
 
 setenv ARCHDIR linux
 
-set szlist = "180x120"
+set szlist = "180x120 120x80 90x60 60x40 48x32 36x24"
 foreach sz (${szlist})
    cd source
    rm -f domain_size.F90
