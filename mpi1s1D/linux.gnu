@@ -50,7 +50,7 @@ CFLAGS = -fastsse
 ifeq ($(OPTIMIZE),yes)
   CFLAGS := $(CFLAGS)
 else
-  CFLAGS := $(CFLAGS) 
+  CFLAGS := $(CFLAGS) -g -O0
 endif
  
 #----------------------------------------------------------------------------
@@ -68,7 +68,7 @@ endif
 ifeq ($(OPTIMIZE),yes)
   FFLAGS = $(FBASE) -O3 -fcray-pointer
 else
-  FFLAGS = $(FBASE) -O3 -fcray-pointer
+  FFLAGS = $(FBASE) -O0 -fcray-pointer -g
 endif
  
 #----------------------------------------------------------------------------
