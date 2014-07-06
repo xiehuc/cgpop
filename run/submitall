@@ -1,0 +1,49 @@
+#!/usr/bin/csh 
+
+cd 180x120
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 120x80
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 90x60
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 60x40
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 48x32
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 36x24
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 24x16
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../
+
+cd 18x12
+foreach file (*.pbs)
+  qsub $file;
+end
+cd ../

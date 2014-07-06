@@ -1,0 +1,90 @@
+!==============================================================================
+! Copyright (C) 2010, University Corporation for Atmospheric Research,
+!                     Colorado State University,
+!                     Los Alamos National Security, LLC,
+!                     United States Department of Energy
+!
+! All rights reserved.  See ../COPYING for copyright details
+!==============================================================================
+
+!|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+ module domain_size
+
+!BOP
+! !MODULE: domain_size
+!
+! !DESCRIPTION:
+!  This module contains parameters for the global model domain size
+!  decomposition block size.  It is used by the domain and block
+!  modules for decomposing the model domain across processors.
+!
+! !REVISION HISTORY:
+!  CVS:$Id: domain_size.F90.gx01v2,v 1.3 2005/12/07 19:40:40 dennis Exp $
+!  CVS:$Name:  $
+
+! !USES:
+
+   use kinds_mod, only: i4
+
+   implicit none
+   private
+   save
+
+! !DEFINED PARAMETERS:
+
+   integer (i4), parameter, public ::  &  ! model size parameters
+      nx_global = 3600 ,&! extent of horizontal axis in i direction
+      ny_global = 2400   ! extent of horizontal axis in j direction
+
+   integer (i4), public :: &
+      block_size_x, &! size of block in first  horizontal dimension
+      block_size_y   ! size of block in second horizontal dimension
+
+   !*** The model will inform the user of the correct
+   !*** values for theparameters below.  A value higher than
+   !*** necessary will not cause the code to fail, but will
+   !*** allocate more memory than is necessary.  A value that
+   !*** is too low will cause the code to exit.  
+   !*** A good initial guess is found using
+   !*** max=(nx_global/block_size_x)*(ny_global/block_size_y)/
+   !***         num_procs
+ 
+   integer (i4), public :: &
+      max_blocks_tropic
+
+!   integer (i4), parameter, public :: &
+!      max_blocks_land = (max_blocks_tropic/2) + 1
+!----------------------------------------------------
+! The following is a list of the block size and
+! core count combinations:  
+!
+!	     block_size
+!   nprocs   _x      _y   max_blocks
+!   --------------------------------
+!           360     240
+!     76    225     150     3
+!    228    225     150	    1
+!    358    180     120     1
+!    541    144      96     1
+!    764    120      80     1   
+!   1312     90      60     1
+!   2009     72      48     1
+!   2822     60      40     1
+!   4324     48      32     1 
+!   4884     45      30     1
+!   7545     36      24     1
+!  10705     30      20     1
+!  16528     24      16     1
+!  28972     18      12     1
+!  41352     15      10     1
+!  64074     12       8     1
+!----------------------------------------------------
+!EOP
+!BOC
+!EOC
+!***********************************************************************
+
+ end module domain_size
+
+!|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

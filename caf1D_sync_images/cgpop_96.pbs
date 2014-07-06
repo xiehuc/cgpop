@@ -1,0 +1,6 @@
+#!/bin/bash
+#PBS -l mppwidth=96,walltime=00:10:00
+
+cd $PBS_O_WORKDIR
+
+aprun -n 96 cgpop < pop_in

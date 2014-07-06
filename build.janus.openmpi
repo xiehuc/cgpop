@@ -1,0 +1,33 @@
+#!/bin/tcsh
+
+#==============================================================================
+# Copyright (C) 2010, University Corporation for Atmospheric Research,
+#                     Colorado State University,
+#                     Los Alamos National Security, LLC,
+#                     United States Department of Energy
+#
+# All rights reserved.  See COPYING for copyright details
+#==============================================================================
+setenv ARCHDIR intel_mpi
+
+set szlist = "180x120 120x80 90x60 60x40 48x32 36x24 24x16 18x12"
+
+foreach sz (${szlist})
+
+   cd source
+   rm -f domain_size.F90
+   ln -s domain_size.F90.${sz} domain_size.F90
+
+   set  mdlist = "mpi1s1D mpi2s1D mpi2s1D_overlap,mpi2s2D"
+   foreach md (${mdlist})
+      cd ../{$md}
+      if( -e {$ARCHDIR}.gnu) then 
+         make clean
+         make -j8
+         mv cgpop cgpop.${ARCHDIR}.{$sz}
+      else
+         echo 'Could not find $ARCHDIR.gnu for method $md'
+      endif
+   end
+   cd ..
+end

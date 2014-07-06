@@ -1,0 +1,35 @@
+------------------------------------------------------------------------
+ 
+Domain Information
+ 
+------------------------------------------------------------------------
+  Horizontal domain: nx =   3600
+                     ny =   2400
+  Block size:  nx_block =    184
+               ny_block =    124
+  Processors for barotropic:    384
+  Number of ghost cells:  2
+  tropic blocks too large: decrease max to 1
+------------------------------------------------------------------------
+ 
+ Solver options (barotropic solver)
+ 
+------------------------------------------------------------------------
+ Solver type:
+  Chron-Gear preconditioned conjg grad
+ Solver converged for err <  1.00000E-09
+ Solver maximum iterations =    124
+  Solver convergence checked every      1 iterations
+ No preconditioner
+ init_solvers: Using solver V10
+ initDOF: Active Ocean points {min,max,avg}:  0,  21600,  15231
+ initDOF: # of {total,active} Ocean points (global):  7711200,  5848836
+ initDOF: # of total blocks:  357
+ initDOF: SUM(LinearDiff) :=  0
+ esolver: using the linear datastructure version
+ CheckAnswers: CAF_SINGLE_PUSH_1D Pressure field: SUM(calc-read):  -7.0421922819466207
+ 
+Timing information:
+ 
+Timer: CAF_SINGLE_PUSH_1D =:       6.53 seconds
+Application 34323 resources: utime ~229s, stime ~58s

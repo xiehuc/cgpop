@@ -1,0 +1,22 @@
+PE 8: error - attempted to acquire lock 8:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 8/24
+PE 13: error - attempted to acquire lock 13:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 13/24
+PE 9: error - attempted to acquire lock 9:0x2aaab0b2f040, which it already holds
+PE 10: error - attempted to acquire lock 10:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 9/24
+*** Caught a fatal signal: SIGABRT(6) on node 10/24
+PE 7: error - attempted to acquire lock 7:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 7/24
+PE 14: error - attempted to acquire lock 14:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 14/24
+PE 15: error - attempted to acquire lock 15:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 15/24
+PE 11: error - attempted to acquire lock 11:0x2aaab0b2f040, which it already holds
+PE 12: error - attempted to acquire lock 12:0x2aaab0b2f040, which it already holds
+*** Caught a fatal signal: SIGABRT(6) on node 11/24
+*** Caught a fatal signal: SIGABRT(6) on node 12/24
+_pmii_daemon(SIGCHLD): [NID 00058] PE 8 exit signal Aborted
+PE 21: error - attempted to acquire lock 21:0x2aaab0b2f040, which it already holds
+[NID 00058] 2011-05-25 13:31:13 Apid 34317: initiated application termination
+*** Caught a fatal signal: SIGABRT(6) on node 21/24

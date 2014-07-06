@@ -1,0 +1,44 @@
+&domain_nml
+  nprocs_tropic = 1
+  tropic_distribution_type = 'spacecurve'
+  ew_boundary_type = 'cyclic'
+  ns_boundary_type = 'closed'
+  timer_detail = 2
+/
+&io_pio_nml
+  io_pio_num_iotasks = 1
+  io_pio_stride = 1
+  io_pio_type_name = 'netcdf'
+/
+&io_nml
+  num_iotasks = 1
+  lredirect_stdout = .false.
+  log_filename = 'pop.out'
+  luse_pointer_files = .false.
+  pointer_filename = 'pop_pointer'
+  luse_nf_64bit_offset = .true.
+/
+&grid_nml
+   horiz_grid_opt       = 'internal'
+   horiz_grid_file      = 'unknown_horiz_grid'
+   sfc_layer_opt        = 'varthick'
+   vert_grid_opt        = 'file'
+   vert_grid_file       = '../data/vert_grid.0.1'
+   topography_opt       = 'file'
+   topography_file      = '../data/topography.0.1'
+   partial_bottom_cells = .false.
+   bottom_cell_file     = 'unknown_bottom_cell'
+   region_mask_file     = 'unknown_region_mask'
+   topo_smooth          = .false.
+   flat_bottom          = .false.
+   lremove_points       = .false.
+/
+&solver_nml
+   solv_convrg    = 1.e-9
+   solv_max_iters = 100
+   solv_ncheck    = 1
+   lprecond       = .false.
+   solv_type      = 'cg1'
+   !solv_type      = 'lcg1'
+   precond_file   = 'empty'
+/

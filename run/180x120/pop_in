@@ -1,0 +1,3 @@
+&input_nml
+   tilefile      = '../../data/cgpoptile_180x120.nc'
+/

@@ -1,0 +1,58 @@
+------------------------------------------------------------------------
+ 
+Domain Information
+ 
+------------------------------------------------------------------------
+  Horizontal domain: nx =   3600
+                     ny =   2400
+  Block size:  nx_block =    184
+               ny_block =    124
+  Processors for barotropic:     24
+  Number of ghost cells:  2
+------------------------------------------------------------------------
+ 
+ Solver options (barotropic solver)
+ 
+------------------------------------------------------------------------
+ Solver type:
+  Chron-Gear preconditioned conjg grad
+ Solver converged for err <  1.00000E-09
+ Solver maximum iterations =    124
+  Solver convergence checked every      1 iterations
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ Input tilefile: ../data/cgpoptile_180x120.nc
+ No preconditioner
+ init_solvers: Using solver V10
+ initDOF: Active Ocean points {min,max,avg}:  115173,  323456,  243701
+ initDOF: # of {total,active} Ocean points (global):  7711200,  5848836
+ initDOF: # of total blocks:  357
+ initDOF: SUM(LinearDiff) :=  0
+ CheckAnswers: MPI1S_SINGLE_PUSH_1D Pressure field: SUM(calc-read):  -7.0421922819176102
+ 
+Timing information:
+ 
+Timer: MPI1S_SINGLE_PUSH_1D =:       4.48 seconds
+Timer: MPI1S_SINGLE_PUSH_1D nosum =:       0.00 seconds
+Application 31109 resources: utime ~15s, stime ~3s

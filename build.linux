@@ -1,0 +1,28 @@
+#!/bin/tcsh
+#==============================================================================
+# Copyright (C) 2010, University Corporation for Atmospheric Research,
+#                     Colorado State University,
+#                     Los Alamos National Security, LLC,
+#                     United States Department of Energy
+#
+# All rights reserved.  See COPYING for copyright details
+#==============================================================================
+
+setenv ARCHDIR linux
+
+set szlist = "180x120"
+foreach sz (${szlist})
+   cd source
+   rm -f domain_size.F90
+   ln -s domain_size.F90.${sz} domain_size.F90
+
+   set mdlist = "mpi1s1D mpi2s1D mpi2s1D_overlap mpi2s2D"
+   foreach md (${mdlist})
+   echo ${md}
+      cd ../{$md}
+         make clean
+         make 
+         mv cgpop cgpop.{$ARCHDIR}.{$sz}
+   end
+   cd ..
+end

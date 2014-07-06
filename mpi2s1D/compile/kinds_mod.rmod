@@ -1,0 +1,12 @@
+
+! =================================================================================== 
+! <<Automatically generated for Rose Fortran Separate Compilation, DO NOT MODIFY IT>> 
+! =================================================================================== 
+
+MODULE kinds_mod
+IMPLICIT NONE
+private 
+save 
+INTEGER :: char_len = 100,log_kind = kind(.TRUE.),i4 = selected_int_kind(6),i8 = selected_int_kind(13),r4 = selected_real_kind(6),r8 = selected_real_kind(13)
+
+END MODULE kinds_mod

@@ -1,0 +1,20 @@
+GNUmakefile:224: warning: overriding commands for target `all'
+GNUmakefile:161: warning: ignoring old commands for target `all'
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+/opt/cray/xt-asyncpe/3.7/bin/ftn: INFO: linux target is being used
+make[2]: *** [cgpop.o] Interrupt
+make[1]: *** [objs] Interrupt
+make: *** [compile.m] Interrupt

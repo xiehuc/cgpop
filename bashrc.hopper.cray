@@ -1,0 +1,23 @@
+#==============================================================================
+# Copyright (C) 2010, University Corporation for Atmospheric Research,
+#                     Colorado State University,
+#                     Los Alamos National Security, LLC,
+#                     United States Department of Energy
+#
+# All rights reserved.  See COPYING for copyright details
+#==============================================================================
+
+module load netcdf
+export PATH=/usr/local/subversion/current/bin:$PATH
+export PATH=/home/dennis/sloccount-2.26:$PATH
+
+# use the Cray compiler set
+export ARCHDIR=x6eCray
+#module load PrgEnv-cray/3.1.49
+#module load netcdf
+#export NETCDF_PATH=${CRAY_NETCDF_DIR}/netcdf-cce
+
+
+module unload PrgEnv-pgi/3.1.61
+module load PrgEnv-cray
+module load netcdf

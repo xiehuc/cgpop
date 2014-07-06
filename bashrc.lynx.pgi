@@ -1,0 +1,19 @@
+#==============================================================================
+# Copyright (C) 2010, University Corporation for Atmospheric Research,
+#                     Colorado State University,
+#                     Los Alamos National Security, LLC,
+#                     United States Department of Energy
+#
+# All rights reserved.  See COPYING for copyright details
+#==============================================================================
+
+export PATH=/usr/local/subversion/current/bin:$PATH
+export PATH=/home/dennis/sloccount-2.26:$PATH
+
+# use the Pgi compiler set
+export ARCHDIR=xt5Pgi
+# module load PrgEnv-pgi
+module load pgi
+module load netcdf
+export NETCDF_PATH=${CRAY_NETCDF_DIR}/netcdf-pgi
+

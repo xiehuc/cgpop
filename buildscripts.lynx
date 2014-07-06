@@ -1,0 +1,82 @@
+#!/usr/bin/tcsh
+
+setenv ARCHDIR xt5Pgi
+#==============================================================================
+# Copyright (C) 2010, University Corporation for Atmospheric Research,
+#                     Colorado State University,
+#                     Los Alamos National Security, LLC,
+#                     United States Department of Energy
+#
+# All rights reserved.  See COPYING for copyright details
+#==============================================================================
+
+#set szlist = "180x120 120x80 90x60 60x40 48x32"
+#set szlist = "180x120"
+set szlist = "120x80"
+#set szlist = "200x200"
+#set szlist = "90x60"
+#set szlist = "90x60 60x40 48x32"
+foreach sz (${szlist})
+
+  cd run/{$sz}
+  set host = `hostname`
+
+  switch ($sz)
+     case "200x200":
+       set pelist = "60"
+       breaksw
+     case "180x120":
+       set pelist = "24 36 48 96 120 180 360"
+       breaksw
+     case "120x80":
+#       set pelist = "96 192 264 384 768"  # 264 causes node failures on lynx
+       set pelist = "96 192 264 384 768"
+       breaksw
+     case "90x60":
+#       set pelist = "168 336 444"  # 168,660 causes node failures on lynx
+       set pelist = "168 336 444 660"
+       breaksw
+     case "60x40":
+#       set pelist = "360 576 708"  # 708 causes node failures on lynx
+       set pelist = "360 576 708"
+       breaksw
+     case "48x32":
+#       set pelist = "552 876 1092 1452 2172 4332"  # 876 causes node failures on lynx
+       set pelist = "552 876"
+       breaksw
+  endsw
+  foreach pe (${pelist})
+     switch ($host)
+        case "lynx?":
+        case "hopper??":
+        case "grace??":
+          set resource = "#PBS -l mppwidth=${pe},walltime=01:00:00"
+          breaksw
+     endsw
+     echo "Building script for: ($host) blocksize: ($sz) core count: ($pe)";
+cat >! ${host}.${pe}.pbs << EOF
+#!/usr/bin/tcsh
+###PBS -q debug
+${resource}
+cd \$PBS_O_WORKDIR
+# X6E specific environment variable settings
+#setenv HUGETLB_ELFMAP W
+#setenv HUGETLB_MORECORE yes
+setenv MPICH_PTL_MATCH_OFF 1
+set id=\`date +%y%m%d-%H%M%S\`
+setenv ARCHDIR xt5Pgi
+#set  mdlist = "caf1D caf1D_overlap"
+ set  mdlist = "mpi2s1D mpi2s2D mpi2s1D_overlap mpi1s1D"
+#set  mdlist = "mpi2s1D mpi2s2D caf1D caf2D"
+#set  mdlist = "mpi2s1D mpi2s2D"
+#set  mdlist = "mpi2s1D mpi1s1D caf1D"
+foreach md (\${mdlist})
+  if(-e ../../\${md}/cgpop.\${ARCHDIR}.${sz}) then 
+	aprun -n ${pe} ../../\${md}/cgpop.\${ARCHDIR}.${sz} < pop_in >& ../results/cgpop_${host}_\${md}_\${ARCHDIR}_${sz}_${pe}.log.\${id}
+  endif
+end
+EOF
+  end
+  cd ../..
+
+end

@@ -1,0 +1,2 @@
+export PATH=/opt/mvapich2-1.5.1p1/bin:$PATH
+export ARCHDIR=intel_mva
