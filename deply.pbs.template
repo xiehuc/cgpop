@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -l walltime=02:00:00
+#PBS -l nodes=$nodes:ppn=12
+#PBS -q cse
+
+. /home/wzzhang/.bashrc
+
+cd $PBS_O_WORKDIR
+
+mdlist="mpi2s1D"
+
+for md in $mdlist
+do
+  for cgpop in cgpop cgpop_db
+  do
+    CGPOP=../../$md/$cgpop.linux.$job
+    if [ -e $CGPOP ];then
+    RECORDER_OUTDIR="$cgpop.linux.$pe" LD_PRELOAD="/home/wzzhang/usr/local/lib/librecorder-compress.so" mpirun -np $pe $CGPOP
+    fi
+  done
+done
