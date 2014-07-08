@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l walltime=02:00:00
+#PBS -l walltime=00:05:00
 #PBS -l nodes=$nodes:ppn=12
 #PBS -q cse
 

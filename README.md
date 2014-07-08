@@ -10,3 +10,6 @@ use wget to download other data file (too big to put into github):
 download http://www.cs.colostate.edu/hpc/cgpop/cgpoptiles.tgz to extract to
 data dir, or you can use cginit to generate these files according to pdf file
 in doc
+
+provide new `deply.sh` to run cgpop. it would write pbs under run folder. you
+must run at `run` folder to run cgpop correctly
