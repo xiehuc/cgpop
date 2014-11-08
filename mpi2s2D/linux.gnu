@@ -75,7 +75,7 @@ endif
 ifeq ($(OPTIMIZE),yes)
   FFLAGS = $(FBASE) -O3 
 else
-  FFLAGS = $(FBASE) -O3
+  FFLAGS = $(FBASE) -O0 -g
 endif
  
 #----------------------------------------------------------------------------

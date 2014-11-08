@@ -220,9 +220,17 @@ sources:
 #
 #----------------------------------------------------------------------------
 
+ifeq ($(ARCHDIR),llvm)
+$(TARGETX): $(OBJS)
+	@echo "  GNUmakefile is making target '$(TARGETX)'"
+	@llvm-link $(OBJS) -o $@.bc
+	@llc -filetype=obj $@.bc -o /tmp/$@.o
+	@$(LD) -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) 
+else
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
 	@$(LD) -o $(TARGETX) $(LDFLAGS) $(OBJS) $(LDLIBS) 
+endif
 
 #----------------------------------------------------------------------------
 #

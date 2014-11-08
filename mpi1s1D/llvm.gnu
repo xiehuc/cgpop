@@ -13,9 +13,9 @@
 # will someday be a file which is a cookbook in Q&A style: "How do I do X?" 
 # is followed by something like "Go to file Y and add Z to line NNN."
 #
-FC = ftn -O3 -Kieee 
-LD = ftn 
-CC = pgcc
+FC = mpif90 
+LD = mpif90 
+CC = gcc
 Cp = /bin/cp
 Cpp = /usr/bin/cpp -P -traditional-cpp
 AWK = /usr/bin/gawk
@@ -29,7 +29,7 @@ MPI = yes
 # Adjust these to point to where netcdf is installed
 
 NETCDFINC = -I$(NETCDF_DIR)/include
-NETCDFLIB = -L$(NETCDF_DIR)/lib
+NETCDFLIB = -L$(NETCDF_DIR)/lib -lnetcdf -lnetcdff
 
 #  Enable trapping and traceback of floating point exceptions, yes/no.
 #  Note - Requires 'setenv TRAP_FPE "ALL=ABORT,TRACE"' for traceback.
@@ -43,7 +43,7 @@ TRAP_FPE = no
 Cpp_opts = $(DCOUPL)
 
 
-Cpp_opts := $(Cpp_opts) -DPOSIX $(NETCDFINC)
+Cpp_opts := $(Cpp_opts) -DPOSIX
  
 #----------------------------------------------------------------------------
 #
@@ -57,7 +57,7 @@ CFLAGS = -fastsse
 ifeq ($(OPTIMIZE),yes)
   CFLAGS := $(CFLAGS) 
 else
-  CFLAGS := $(CFLAGS) 
+  CFLAGS := $(CFLAGS) -g -O0
 endif
  
 #----------------------------------------------------------------------------
@@ -66,16 +66,16 @@ endif
 #
 #----------------------------------------------------------------------------
  
-FBASE = $(ABI) $(NETCDFINC) -I$(ObjDepDir) $(NETCDF_FLIB)
+FBASE = $(ABI) $(NETCDFINC) -I$(ObjDepDir) -g -S -fplugin=$(DRAGONEGG) -fplugin-arg-dragonegg-emit-ir
 
 ifeq ($(TRAP_FPE),yes)
   FBASE := $(FBASE) 
 endif
 
 ifeq ($(OPTIMIZE),yes)
-  FFLAGS = $(FBASE) -w -fastsse -Mbyteswapio
+  FFLAGS = $(FBASE) -O3 -fcray-pointer
 else
-  FFLAGS = $(FBASE) -g
+  FFLAGS = $(FBASE) -O0 -g -fcray-pointer
 endif
  
 #----------------------------------------------------------------------------
@@ -84,9 +84,9 @@ endif
 #
 #----------------------------------------------------------------------------
  
-LDFLAGS = $(ABI) -v
+LDFLAGS = $(ABI) -v -O3
  
-LIBS = $(NETCDFLIB) -lnetcdf
+LIBS = $(NETCDFLIB)
  
 ifeq ($(MPI),yes)
   LIBS := $(LIBS) 
@@ -123,7 +123,7 @@ LDLIBS = $(LIBS)
  
 %.o: %.f90
 	@echo LINUX Compiling with implicit rule $<
-	@$(FC) $(FFLAGS) -c $<
+	@$(FC) $(FFLAGS) -c $< -o $@
 	@if test -f *.mod; then mv -f *.mod $(ObjDepDir); fi
  
 %.o: %.c
