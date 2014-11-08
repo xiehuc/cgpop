@@ -23,7 +23,9 @@ foreach sz (${szlist})
          make clean
          make 
          mv cgpop cgpop.{$ARCHDIR}.{$sz}
+         mv cgpop.bc cgpop.bc.{$ARCHDIR}.{$sz}
          mv cgpop_db cgpop_db.{$ARCHDIR}.{$sz}
+         mv cgpop_db.bc cgpop_db.bc.{$ARCHDIR}.{$sz}
    end
    cd ..
 end
