@@ -57,7 +57,7 @@ CFLAGS = -fastsse
 ifeq ($(OPTIMIZE),yes)
   CFLAGS := $(CFLAGS) 
 else
-  CFLAGS := $(CFLAGS) 
+  CFLAGS := $(CFLAGS) -g -O0
 endif
  
 #----------------------------------------------------------------------------
