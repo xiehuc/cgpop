@@ -13,9 +13,10 @@ for md in $mdlist
 do
   for cgpop in cgpop cgpop_db
   do
-    CGPOP=../../$md/$cgpop.linux.$job
+    CGPOP=../../$md/$cgpop.$ARCHDIR.$job
     if [ -e $CGPOP ];then
-    RECORDER_OUTDIR="$cgpop.linux.$pe" LD_PRELOAD="/home/wzzhang/usr/local/lib/librecorder-compress.so" mpirun -np $pe $CGPOP
+    #RECORDER_OUTDIR="$cgpop.$ARCHDIR.$pe" LD_PRELOAD="/home/wzzhang/usr/local/lib/librecorder-compress.so" mpirun -np $pe $CGPOP
+    mpirun -np $pe $CGPOP
     fi
   done
 done

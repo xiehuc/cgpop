@@ -27,6 +27,11 @@ build llvm hack
    export DRAGONEGG=...
    ./build.llvm
 
+build debug symbol
+-------------------
+
+   modify build.\* script change `make` to `make OPTIMIZE=no`
+
 ================================================================================
 CGPOP Miniapp Version 1.1
 README FILE
