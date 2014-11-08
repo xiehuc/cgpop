@@ -32,6 +32,13 @@ build debug symbol
 
    modify build.\* script change `make` to `make OPTIMIZE=no`
 
+run 
+----
+
+   modify deply.pbs.template properly,
+   modify ~/.bashrc properly,
+   ./deply.sh
+
 ================================================================================
 CGPOP Miniapp Version 1.1
 README FILE

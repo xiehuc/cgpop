@@ -1,6 +1,0 @@
-#!/bin/bash
-#PBS -l mppwidth=24,walltime=02:00:00
-
-cd $PBS_O_WORKDIR
-
-aprun -n 24 cgpop < pop_in | tee pop.log

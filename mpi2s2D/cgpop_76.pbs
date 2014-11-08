@@ -1,8 +1,0 @@
-#!/bin/bash
-#PBS -l mppwidth=76,walltime=02:00:00
-#PBS -m abe
-#PBS -M dennis@ucar.edu
-
-cd $PBS_O_WORKDIR
-
-aprun -n 76 cgpop < pop_in
