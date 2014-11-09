@@ -16,7 +16,7 @@ do
     CGPOP=../../$md/$cgpop.$ARCHDIR.$job
     if [ -e $CGPOP ];then
     #RECORDER_OUTDIR="$cgpop.$ARCHDIR.$pe" LD_PRELOAD="/home/wzzhang/usr/local/lib/librecorder-compress.so" mpirun -np $pe $CGPOP
-    mpirun -np $pe $CGPOP
+    PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" mpirun -np $pe $CGPOP
     fi
   done
 done
