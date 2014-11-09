@@ -21,3 +21,15 @@
 *.i*86
 *.x86_64
 *.hex
+
+run
+data
+mpi1s1D/cgpop*
+mpi1s1D/compile
+mpi2s1D/cgpop*
+mpi2s1D/compile
+mpi2s2D/cgpop*
+mpi2s2D/compile
+mpi2s1D_overlap/cgpop*
+mpi2s1D_overlap/compile
+

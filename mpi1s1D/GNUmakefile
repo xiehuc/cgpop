@@ -224,8 +224,9 @@ ifeq ($(ARCHDIR),llvm)
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
 	@llvm-link $(OBJS) -o $@.bc
-	@llc -filetype=obj $@.bc -o /tmp/$@.o
-	@$(LD) -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) 
+	@opt -load `pkg-config llvm-prof --variable=profiling_so` -insert-edge-profiling $@.bc -o /tmp/$@.bc
+	@llc -filetype=obj /tmp/$@.bc -o /tmp/$@.o
+	@$(LD) -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) `pkg-config llvm-prof --variable=profile_rt_lib`
 else
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
