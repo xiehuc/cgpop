@@ -17,27 +17,31 @@ must run at `run` folder to run cgpop correctly
 build original
 -----------------
 
-   export NETCDF\_DIR=...
-   ./build.linux
+    export NETCDF\_DIR=...
+    ./build.linux
 
 build llvm hack
 ------------------
 
-   export NETCDF\_DIR=...
-   export DRAGONEGG=...
-   ./build.llvm
+this use -insert-edge-profiling to make profiling out. you need install
+[llvm-prof](https://github.com/xiehuc/llvm-prof) first. makesure you add
+correct pkgconfig dir to `$PKG_CONFIG_PATH`
+
+    export NETCDF\_DIR=...
+    export DRAGONEGG=...
+    ./build.llvm
 
 build debug symbol
 -------------------
 
-   modify build.\* script change `make` to `make OPTIMIZE=no`
+    modify build.\* script change `make` to `make OPTIMIZE=no`
 
 run 
 ----
 
-   modify deply.pbs.template properly,
-   modify ~/.bashrc properly,
-   ./deply.sh
+    modify deply.pbs.template properly,
+    modify ~/.bashrc properly,
+    ./deply.sh
 
 ================================================================================
 CGPOP Miniapp Version 1.1
