@@ -34,7 +34,19 @@ correct pkgconfig dir to `$PKG_CONFIG_PATH`
 build debug symbol
 -------------------
 
-    modify build.\* script change `make` to `make OPTIMIZE=no`
+modify build.\* script change `make` to `make OPTIMIZE=no`
+
+build single project
+----------------------
+
+if you want to do experiment, and only compile in one directory like mpi2s1D,
+there are some things you need know.
+
+   cd mpi2s1D
+   ARCHDIR=llvm make -f GNUMakefile
+
+1.  notice link file source/domain\_size.F90, it should link to a scale like domain\_size.F90.180x120
+2.  notice pop\_in file, this content should match domain\_size, or would crach while run.
 
 run 
 ----
