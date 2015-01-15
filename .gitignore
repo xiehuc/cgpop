@@ -32,4 +32,5 @@ mpi2s2D/cgpop*
 mpi2s2D/compile
 mpi2s1D_overlap/cgpop*
 mpi2s1D_overlap/compile
+source/domain_size.F90
 

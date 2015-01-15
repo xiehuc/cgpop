@@ -66,7 +66,7 @@ endif
 #
 #----------------------------------------------------------------------------
  
-FBASE = $(ABI) $(NETCDFINC) -I$(ObjDepDir) -g -S -fplugin=$(DRAGONEGG) -fplugin-arg-dragonegg-emit-ir
+FBASE = $(ABI) $(NETCDFINC) -I$(ObjDepDir) -S -fplugin=$(DRAGONEGG) -fplugin-arg-dragonegg-emit-ir -fplugin-arg-dragonegg-llvm-ir-optimize=0
 
 ifeq ($(TRAP_FPE),yes)
   FBASE := $(FBASE) 
