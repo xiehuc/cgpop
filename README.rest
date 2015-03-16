@@ -1,0 +1,63 @@
+cgpop
+=====
+
+a mirror of cgpop https://code.google.com/p/cgpop/
+
+use wget to download other data file (too big to put into github)::
+
+   wget https://github.com/wzzhang-HIT/cgpop/releases/download/v1.1/topography.0.1 -O data/topography.0.1
+
+download http://www.cs.colostate.edu/hpc/cgpop/cgpoptiles.tgz to extract to
+data dir, or you can use cginit to generate these files according to pdf file
+in doc
+
+provide new ``deply.sh`` to run cgpop. it would write pbs under run folder. you
+must run at ``run`` folder to run cgpop correctly
+
+build original
+-----------------
+
+::
+
+    export NETCDF\_DIR=...
+    ./build.linux
+
+build llvm hack
+------------------
+
+this use -insert-edge-profiling to make profiling out. you need install
+llvm-prof__ first. makesure you add
+correct pkgconfig dir to ``$PKG_CONFIG_PATH`` ::
+
+    export NETCDF\_DIR=...
+    export DRAGONEGG=...
+    ./build.llvm
+
+__ https://github.com/xiehuc/llvm-prof
+
+build debug symbol
+-------------------
+
+modify build.\* script change ``make`` to ``make OPTIMIZE=no``
+
+build single project
+----------------------
+
+if you want to do experiment, and only compile in one directory like mpi2s1D,
+there are some things you need know:
+
+.. code:: bash
+
+   cd mpi2s1D
+   export ARCHDIR=llvm
+   make -f GNUMakefile
+
+1.  notice link file source/domain\_size.F90, it should link to a scale like domain\_size.F90.180x120
+2.  notice pop\_in file, this content should match domain\_size, or would crach while run.
+
+run 
+----
+
+1. modify deply.pbs.template properly,
+2. modify ~/.bashrc properly,
+3. run ``./deply.sh``
