@@ -224,9 +224,12 @@ ifeq ($(ARCHDIR),llvm)
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
 	@llvm-link $(OBJS) -o $@.bc
-	@opt -load `pkg-config llvm-prof --variable=profiling_so` -insert-edge-profiling $@.bc -o /tmp/$@.bc
-	@llc -filetype=obj /tmp/$@.bc -o /tmp/$@.o
-	@$(LD) -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) `pkg-config llvm-prof --variable=profile_rt_lib`
+	@opt -O1 $@.bc -o /tmp/$@.0.bc
+	@opt -load `pkg-config llvm-pred --variable=predicate_so` -PerfPred -insert-pred-profiling -insert-mpi-profiling /tmp/$@.0.bc -o /tmp/$@.1.bc
+	@opt -load `pkg-config llvm-pred --variable=predicate_so` -Reduce /tmp/$@.1.bc -o /tmp/$@.2.bc
+	@opt -load `pkg-config llvm-pred --variable=predicate_so` -Force -Reduce /tmp/$@.2.bc -o /tmp/$@.3.bc
+	@llc -filetype=obj /tmp/$@.3.bc -o /tmp/$@.o
+	@gfortran -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) `pkg-config llvm-prof --variable=profile_rt_lib`
 else
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
