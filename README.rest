@@ -17,6 +17,14 @@ must run at ``run`` folder to run cgpop correctly
 build original
 -----------------
 
+cgpop require `netcdf fortran`__ bindings, you need compile and install it first.
+
+__ http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.2.tar.gz
+
+or in ubuntu , just install ``libnetcdf-dev`` and ``libnetcdff5`` packages. 
+first one provides ``netcdf.mod`` which fortran header file. latter provides
+``libnetcdff.so`` fortran shared library.
+
 ::
 
     export NETCDF\_DIR=...
