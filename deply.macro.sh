@@ -21,24 +21,30 @@ nprocs['36x24']="1320 1260 1200 960 840 720 600 480 360 240 180 96" #120
 
 mdlist="mpi2s1D"
 
+if [ -z "$ARCHDIR" ]; then
+   echo 'please set $ARCHDIR Environment'
+   exit 0
+fi
+
 for job in ${!nprocs[*]}
 do
    for pe in ${nprocs[$job]}
-	do
-	sed -e "s/\$nodes/$(($pe/12))/g" -e "s/\$job/$job/g" -e "s/\$pe/$pe/g" deply.pbs.template > run/$job/deply.$pe.pbs
-	cd run/$job
-
-   for md in $mdlist
    do
-      for cgpop in cgpop cgpop_db
-      do
-         CGPOP=../../$md/$cgpop.$ARCHDIR.$job
-         if [ -e $CGPOP ];then
-            PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" MPI_RANK=0 MPI_SIZE=$pe $CGPOP
-         fi
-      done
-   done
+      cd run/$job
 
-	cd ../..
-	done 
+      for md in $mdlist
+      do
+         for cgpop in cgpop cgpop_db
+         do
+            CGPOP=../../$md/$cgpop.$ARCHDIR.$job
+            if [ -e $CGPOP ];then
+               echo "running $CGPOP with $pe process" >&2
+               # /usr/bin/time, not bash time keyword. -p is a familar output format
+               PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" MPI_RANK=0 MPI_SIZE=$pe time -p $CGPOP
+            fi
+         done
+      done
+
+      cd ../..
+   done 
 done
