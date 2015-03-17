@@ -231,9 +231,9 @@ sources:
 ifeq ($(ARCHDIR),llvm)
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
-	@llvm-link $(OBJS) -o $@.bc
-	@opt -O1 $@.bc -o /tmp/$@.0.bc
-	@opt -load `pkg-config llvm-pred --variable=predicate_so` -PerfPred -insert-pred-profiling -insert-mpi-profiling /tmp/$@.0.bc -o /tmp/$@.1.bc
+	@llvm-link $(OBJS) -o /tmp/$@.bc
+	@opt -O1 /tmp/$@.bc -o $@.bc
+	@opt -load `pkg-config llvm-pred --variable=predicate_so` -PerfPred -insert-pred-profiling -insert-mpi-profiling $@.bc -o /tmp/$@.1.bc
 	@opt -load `pkg-config llvm-pred --variable=predicate_so` -Reduce /tmp/$@.1.bc -o /tmp/$@.2.bc
 	@opt -load `pkg-config llvm-pred --variable=predicate_so` -Force -Reduce /tmp/$@.2.bc -o /tmp/$@.3.bc
 	@llc -filetype=obj /tmp/$@.3.bc -o /tmp/$@.o
