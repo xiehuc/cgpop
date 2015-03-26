@@ -6,6 +6,9 @@ a mirror of cgpop https://code.google.com/p/cgpop/
 use wget to download other data file (too big to put into github)::
 
    wget https://github.com/wzzhang-HIT/cgpop/releases/download/v1.1/topography.0.1 -O data/topography.0.1
+   wget https://github.com/wzzhang-HIT/cgpop/releases/download/v1.1/cgpoptile_180x120.nc.tar.xz -O /tmp/180x120.tar.xz
+   cd data
+   tar xvf /tmp/180x120.tar.xz
 
 download http://www.cs.colostate.edu/hpc/cgpop/cgpoptiles.tgz to extract to
 data dir, or you can use cginit to generate these files according to pdf file
