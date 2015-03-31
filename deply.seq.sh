@@ -4,12 +4,12 @@
 
 declare -A nprocs
 # small set                                       #commented would crash
-nprocs['180x120']={24..360..3}
-nprocs['120x80']={48..768..3}
-nprocs['90x60']={84..1320..5}
-nprocs['60x40']={96..1188..5}
-nprocs['48x32']={72..1272..5}
-nprocs['36x24']={96..1320..5}
+nprocs['180x120']=$(seq 24 3 360)
+nprocs['120x80']=$(seq 48 3 768)
+nprocs['90x60']=$(seq 84 5 1320)
+nprocs['60x40']=$(seq 96 5 1188)
+nprocs['48x32']=$(seq 72 5 1272)
+nprocs['36x24']=$(seq 96 5 1320)
 
 mdlist="mpi2s1D"
 
