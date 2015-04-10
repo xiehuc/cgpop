@@ -51,7 +51,7 @@ Cpp_opts := $(Cpp_opts) -DPOSIX
 #
 #----------------------------------------------------------------------------
  
-CFLAGS = -fastsse
+CFLAGS = -fastsse -pg
 
 
 ifeq ($(OPTIMIZE),yes)
@@ -66,7 +66,7 @@ endif
 #
 #----------------------------------------------------------------------------
  
-FBASE = $(ABI) $(NETCDFINC) -I$(ObjDepDir) -S -fplugin=$(DRAGONEGG) -fplugin-arg-dragonegg-emit-ir -fplugin-arg-dragonegg-llvm-ir-optimize=0
+FBASE = $(ABI) $(NETCDFINC) -I$(ObjDepDir) -S -fplugin=$(DRAGONEGG) -fplugin-arg-dragonegg-emit-ir -fplugin-arg-dragonegg-llvm-ir-optimize=0 -pg
 
 ifeq ($(TRAP_FPE),yes)
   FBASE := $(FBASE) 
@@ -84,7 +84,7 @@ endif
 #
 #----------------------------------------------------------------------------
  
-LDFLAGS = $(ABI) -v -O3
+LDFLAGS = $(ABI) -v -O3 -pg
  
 LIBS = $(NETCDFLIB)
  
