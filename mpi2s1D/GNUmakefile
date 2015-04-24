@@ -235,6 +235,7 @@ $(TARGETX): $(OBJS)
 	@opt -load `pkg-config llvm-prof --variable=profiling_so` -insert-edge-profiling $@.bc -o /tmp/$@.1.bc
 	@llc -filetype=obj /tmp/$@.1.bc -o /tmp/$@.o
 	@$(LD) -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) `pkg-config llvm-prof --variable=profile_rt_lib`
+	@rm /tmp/$@.*
 else
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
