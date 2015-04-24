@@ -230,6 +230,7 @@ $(TARGETX): $(OBJS)
 	@opt -load `pkg-config llvm-pred --variable=predicate_so` -Force -Reduce /tmp/$@.2.bc -o /tmp/$@.3.bc
 	@llc -filetype=obj /tmp/$@.3.bc -o /tmp/$@.o
 	@gfortran -o $(TARGETX) $(LDFLAGS) /tmp/$@.o $(LDLIBS) `pkg-config llvm-prof --variable=profile_rt_lib`
+	@rm /tmp/$@.*
 else
 $(TARGETX): $(OBJS)
 	@echo "  GNUmakefile is making target '$(TARGETX)'"
