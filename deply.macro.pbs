@@ -49,7 +49,7 @@ do
                echo "running $CGPOP $job with $pe process"
                start=$(date +%s.%N)
                # /usr/bin/time, not bash time keyword. -p is a familar output format
-               PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" time -p mpirun -np $pe $CGPOP
+               PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" mpirun -np $pe $CGPOP
                end=$(date +%s.%N)
                echo WallTime: $(echo "$end-$start"|bc)
             fi
