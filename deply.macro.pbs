@@ -48,7 +48,6 @@ do
             if [ -e $CGPOP ];then
                echo "running $CGPOP $job with $pe process"
                start=$(date +%s.%N)
-               date >> $TEST/test_ep_$j.log
                # /usr/bin/time, not bash time keyword. -p is a familar output format
                PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" time -p mpirun -np $pe $CGPOP
                end=$(date +%s.%N)

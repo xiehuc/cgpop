@@ -15,7 +15,10 @@ do
   do
     CGPOP=../../$md/$cgpop.$ARCHDIR.$job
     if [ -e $CGPOP ];then
-       PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" mpirun -np $pe $CGPOP
+      start=$(date +%s.%N)
+      PROFILING_OUTDIR="$cgpop.$ARCHDIR.$pe" mpirun -np $pe $CGPOP
+      end=$(date +%s.%N)
+      echo WallTime: $(echo "$end-$start"|bc)
     fi
   done
 done
