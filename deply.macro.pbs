@@ -2,8 +2,8 @@
 # a macro script means run all test in single machine, didn't deploy to
 # clusters.
 # usage qsub deply.macro.pbs
-#PBS -l walltime=00:10:00
-#PBS -l nodes=110:ppn=12
+#PBS -l walltime=00:50:00
+#PBS -l nodes=100:ppn=12
 #PBS -q cse
 
 . /home/wzzhang/.bashrc
@@ -14,10 +14,10 @@ declare -A nprocs
 # small set                                       #commented would crash
 nprocs['180x120']="360 180  120  96  48  36  24"
 nprocs['120x80']="768 672  576  480 384 264 192 96" #48
-nprocs['90x60']="1320 1248 1164 996  828 660 552 444 336 252 168" #84
-nprocs['60x40']="1188 1068 948  828 708 648 576 468 360 276 180 96"
-nprocs['48x32']="1272 1188 984  876 720 552 420 348 144 72" #276
-nprocs['36x24']="1320 1260 1200 960 840 720 600 480 360 240 180 96" #120
+nprocs['90x60']="1200 1164 996  828 660 552 444 336 252 168"
+nprocs['60x40']="1200 1188 1068 948  828 708 648 576 468 360 276"
+nprocs['48x32']="1200 1188 984  876 720 552 420 348"
+nprocs['36x24']="1200 1080 960 840 720 600"
 
 #huge set
 #nprocs['180x120']="360 180 120 96 48 36 24"
